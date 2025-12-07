@@ -1,6 +1,6 @@
-let ataqueJugador   
-
-
+let ataqueJugador
+let ataqueEnemigo   
+let resultado
 
 function seleccionarMascotaJugador() {
     let seleccion;
@@ -43,9 +43,72 @@ function seleccionarMascotaEnemigo() {
     document.getElementById('mascota-enemigo').innerHTML = seleccionEnemigo
 }
 
+function ataqueFuego(){
+    ataqueJugador = 'FUEGO'
+    ataqueAleatorioEnemigo()
+    crearMensaje() 
+}
+
+function ataqueAgua(){
+    ataqueJugador = 'AGUA'
+    ataqueAleatorioEnemigo()
+    crearMensaje()
+}
+
+function ataqueTierra(){
+    ataqueJugador = 'TIERRA'
+    ataqueAleatorioEnemigo()
+    crearMensaje()
+}
+
+function ataqueAleatorioEnemigo(){
+    let ataqueAleatorio = aleatorio(1,3)
+
+    if (ataqueAleatorio == 1){
+        ataqueEnemigo = 'FUEGO'
+    }else if(ataqueAleatorio == 2){
+        ataqueEnemigo = 'AGUA'
+    }else{
+        ataqueEnemigo = 'TIERRA'
+    }
+
+}
+
+function combate(){
+    if(ataqueJugador == ataqueEnemigo){
+        resultado = 'EMPATARON'
+    }else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
+        resultado = 'GANASTE'
+    }else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
+        resultado = 'GANASTE'
+    }else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO'){
+        resultado == 'GANASTE'
+    }else{
+        resultado = 'PERDISTE'
+    }
+}
+
+function crearMensaje(){
+    combate()
+
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + ' ---> ' + resultado
+
+    sectionMensajes.appendChild(parrafo)
+
+}
+
 function iniciarJuego() {
     let botonMascotaJugador = document.getElementById('boton-mascota') 
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.addEventListener('click', ataqueFuego)
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.addEventListener('click', ataqueAgua)
+    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra.addEventListener('click', ataqueTierra)
 }
 
 //Carga el documento .html y despues ejecuta la función Iniciar Juego
