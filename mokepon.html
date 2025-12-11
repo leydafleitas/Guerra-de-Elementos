@@ -2,32 +2,50 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>MOKEPON</title>
+        <title>Guerra de elementos</title>
         <script src="./js/mokepon.js"></script>
+        <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <!--h1 solo se puede usar una vez en html-->
-        <h1>MOKEPON🔥🌊🌰</h1>
-
         <section id="seleccionar-mascota">
-            <h2>Elige tu mascota</h2>
+        <!--h1 solo se puede usar una vez en html-->
+        <h1 class = "titulo">GUERRA DE ELEMENTOS</h1>
 
-            <!--El for funciona para que si selecciones el id, se seleccione el objeto-->
-            <label for="Hipodoge">Hipodoge</label>
-            <!--tupe es para saber el tipo de entrada que va a tener, input=escribir, radio=circulo, time=formato hora-->
-            <!--Name se utiliza para agruparlos, o sea mascota es un grupo aqui-->
-            <input type="radio" name="mascota" id="Hipodoge"/>
+            <h2 class = "subtitulo">Elige tu personaje</h2>
 
-            <label for="Capipepo">Capipepo</label>
-            <input type="radio" name="mascota" id="Capipepo"/>
+            <!--CONTENEDOR DE TARJETAS EN FILA-->
+            <div id="contenedor-tarjetas">
+                <!--type es para saber el tipo de entrada que va a tener, input=escribir, radio=circulo, time=formato hora-->
+                <!--Name se utiliza para agruparlos, o sea mascota es un grupo aqui-->
+                <input type="radio" name="mascota" id="Hipodoge"/>
+                <!--El for funciona para que si selecciones el id, se seleccione el objeto-->
+                <label class="tarjeta-de-mokepon hipodoge" for="Hipodoge">
+                    <img src="img/Hipodoge.png" alt="Hipodoge"
+                    <p>Hipodoge</p>
+                </label>
 
-            <label for="Ratigueya">Ratigueya</label>
-            <input type="radio" name="mascota" id="Ratigueya"/>
+                <input type="radio" name="mascota" id="Capipepo"/>
+                <label class="tarjeta-de-mokepon capipepo" for="Capipepo">
+                    <img src="img/Capipepo.png" alt="Capipepo"
+                    <p>Capipepo</p>
+                </label>
+
+                <input type="radio" name="mascota" id="Ratigueya"/>
+                <label class="tarjeta-de-mokepon ratigueya" for="Ratigueya">
+                    <img src="img/Ratigueya.png" alt="Ratigueya"
+                    <p>Ratigueya</p>
+                </label>
+                
+
+            </div>
 
             <button id="boton-mascota">Seleccionar</button>
         </section>
 
         <section id="seleccionar-ataque">
+            <!--h1 solo se puede usar una vez en html-->
+            <h1 class = "titulo">GUERRA DE ELEMENTOS🔥🌊🌰</h1>
+
             <h2>Elige tu ataque</h2>
 
             <!--Span se utiliza cuando estamos usando variables dinamicas, para poder cambiar el valor con JavaScript cuando estemos haciendo el juego-->

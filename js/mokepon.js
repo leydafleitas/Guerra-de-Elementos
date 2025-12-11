@@ -22,7 +22,7 @@ function seleccionarMascotaJugador() {
         seleccion = null
     }
     if (seleccion != null){
-        alert('SELECCIONASTE TU MASCOTA ' + seleccion)
+        //alert('SELECCIONASTE TU MASCOTA ' + seleccion)
         document.getElementById('mascota-jugador').innerHTML = seleccion
     } else {
         alert('DEBES DE SELCCIONAR UNA MASCOTA')
@@ -47,7 +47,7 @@ function seleccionarMascotaEnemigo() {
         seleccionEnemigo = 'RATIGUEYA'
     }
 
-    alert('EL ENEMIGO SELECCIONO LA MASCOTA '+ seleccionEnemigo)
+    //alert('EL ENEMIGO SELECCIONO LA MASCOTA '+ seleccionEnemigo)
     document.getElementById('mascota-enemigo').innerHTML = seleccionEnemigo
 }
 
