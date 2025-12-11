@@ -1,6 +1,8 @@
 let ataqueJugador
 let ataqueEnemigo   
 let resultado
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 function seleccionarMascotaJugador() {
     let seleccion;
@@ -74,17 +76,51 @@ function ataqueAleatorioEnemigo(){
 
 }
 
+function revisarVidas(){
+    if(vidasEnemigo == 0 || vidasJugador == 0){
+        finalizarJuego()
+    }
+}
+
+function finalizarJuego(){
+    document.getElementById('boton-fuego').disabled = true
+    document.getElementById('boton-agua').disabled = true
+    document.getElementById('boton-tierra').disabled = true
+
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+
+    if (vidasEnemigo == 0){
+        parrafo.innerHTML = '🎉 Ganaste la partida completa'
+    }else{
+        parrafo.innerHTML = '💀 Perdiste la partida completa'
+    }
+
+    sectionMensajes.appendChild(parrafo)
+}
+
 function combate(){
+    let spanVidasJugador = document.getElementById("vidas-jugador")
+    let spanVidasEnemigo = document.getElementById("vidas-enemigo")
+
     if(ataqueJugador == ataqueEnemigo){
         resultado = 'EMPATARON'
     }else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
         resultado = 'GANASTE'
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     }else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
         resultado = 'GANASTE'
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     }else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO'){
-        resultado == 'GANASTE'
+        resultado = 'GANASTE'
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     }else{
         resultado = 'PERDISTE'
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
     }
 }
 
@@ -96,6 +132,8 @@ function crearMensaje(){
     parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + ' ---> ' + resultado
 
     sectionMensajes.appendChild(parrafo)
+
+    revisarVidas()
 
 }
 
